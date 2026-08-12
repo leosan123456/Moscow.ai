@@ -1,4 +1,7 @@
-# vuln-ai-platform
+# Moscow.ai — vuln-ai-platform
+
+> Moscow AI, projeto focado em cybersecurity: modelo de IA preditiva focado na
+> identificação de vulnerabilidades de redes locais.
 
 Plataforma **defensiva** de análise de vulnerabilidades com IA: descobre, analisa, valida
 e prioriza vulnerabilidades em ativos de clientes **autorizados por contrato**.
