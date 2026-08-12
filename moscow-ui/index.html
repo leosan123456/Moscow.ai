@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moscow Cyber Security — UI Kit (referencia de design)</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#08080a; color:#e5e5e7;
+          font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding:2.5rem 1.5rem 1rem; max-width:1200px; margin:0 auto; }
+  header h1 { margin:0 0 .35rem; font-size:1.6rem; color:#fff; }
+  header h1 span { color:#e5484d; }
+  header p { margin:0; color:#8a8a90; max-width:60ch; line-height:1.5; }
+  main { max-width:1200px; margin:0 auto; padding:0 1.5rem 4rem; }
+  h2 { font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; color:#8a8a90;
+        margin:2rem 0 .75rem; border-bottom:1px solid #1c1c20; padding-bottom:.5rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+  .card { text-decoration:none; color:inherit; border:1px solid #1c1c20; border-radius:14px;
+           overflow:hidden; background:#0e0e10; transition:border-color .15s, transform .15s; }
+  .card:hover { border-color:#e5484d; transform:translateY(-2px); }
+  .thumb { aspect-ratio:16/10; overflow:hidden; display:flex; align-items:flex-start; justify-content:center; }
+  .thumb img { width:100%; height:auto; display:block; }
+  .meta { padding:.8rem .9rem 1rem; }
+  .meta h3 { margin:0 0 .3rem; font-size:.98rem; color:#fff; }
+  .meta p { margin:0; font-size:.8rem; color:#8a8a90; line-height:1.45; }
+  footer { max-width:1200px; margin:0 auto; padding:1rem 1.5rem 3rem; color:#5a5a60; font-size:.8rem; }
+</style>
+</head>
+<body>
+  <header>
+    <h1><span>Moscow</span> Cyber Security — UI Kit</h1>
+    <p>Referencia de design (mockups em SVG, design intacto). Abra cada tela para visualizar em tamanho real.
+       Para reimplementar como codigo funcional, o Claude Code deve ler o <code>CLAUDE.md</code> na raiz.</p>
+  </header>
+  <main>
+    <h2>Telas</h2>
+    <div class="grid">
+      <a class="card" href="html/login-page.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Login%20Page.svg" alt="Login"></div>
+        <div class="meta"><h3>Login</h3><p>Tela de acesso: split visual (esfera vermelha) + formulario de login, SSO Google/Microsoft.</p></div>
+      </a>
+      <a class="card" href="html/dashboard.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Dashboard%20Backoffice.svg" alt="Dashboard"></div>
+        <div class="meta"><h3>Dashboard</h3><p>Painel principal: KPIs, grafico de rede, mapa de ameacas, varreduras recentes, alertas em tempo real.</p></div>
+      </a>
+      <a class="card" href="html/vulnerabilidades.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Vulnerabilidades.svg" alt="Vulnerabilidades"></div>
+        <div class="meta"><h3>Vulnerabilidades</h3><p>Lista de vulnerabilidades: filtros por severidade, KPIs, donut de distribuicao, tabela CVE.</p></div>
+      </a>
+      <a class="card" href="html/varreduras.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Varreduras.svg" alt="Varreduras"></div>
+        <div class="meta"><h3>Varreduras</h3><p>Scans: KPIs, varreduras em andamento (barras de progresso), historico de varreduras.</p></div>
+      </a>
+      <a class="card" href="html/ativos.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Ativos.svg" alt="Ativos"></div>
+        <div class="meta"><h3>Ativos</h3><p>Inventario de ativos: KPIs por tipo, tabela (IP/URL, SO/Stack, risco, status).</p></div>
+      </a>
+      <a class="card" href="html/usuarios.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Usuarios.svg" alt="Usuarios"></div>
+        <div class="meta"><h3>Usuarios</h3><p>Gerenciamento de usuarios: KPIs, tabela (cargo, ultimo acesso, status, permissao).</p></div>
+      </a>
+      <a class="card" href="html/relatorios.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Relatorios.svg" alt="Relatorios"></div>
+        <div class="meta"><h3>Relatorios</h3><p>Relatorios: KPIs, historico com tipo, periodo, formato (PDF/DOCX) e status.</p></div>
+      </a>
+      <a class="card" href="html/configuracoes.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Configuracoes.svg" alt="Configuracoes"></div>
+        <div class="meta"><h3>Configuracoes</h3><p>Ajustes: Geral, Notificacoes, Integracao (Slack/Jira/PagerDuty/Webhook), Seguranca.</p></div>
+      </a>
+    </div>
+
+    <h2>Estados</h2>
+    <div class="grid">
+      <a class="card" href="html/vulnerabilidades-filtro-criticas.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Filtro%20Criticas.svg" alt="Vuln. - filtro Criticas"></div>
+        <div class="meta"><h3>Vuln. - filtro Criticas</h3><p>Vulnerabilidades com filtro 'Criticas' ativo.</p></div>
+      </a>
+      <a class="card" href="html/vulnerabilidades-filtro-altas.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Filtro%20Altas.svg" alt="Vuln. - filtro Altas"></div>
+        <div class="meta"><h3>Vuln. - filtro Altas</h3><p>Vulnerabilidades com filtro 'Altas' ativo.</p></div>
+      </a>
+      <a class="card" href="html/vulnerabilidades-filtro-medias.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Filtro%20Medias.svg" alt="Vuln. - filtro Medias"></div>
+        <div class="meta"><h3>Vuln. - filtro Medias</h3><p>Vulnerabilidades com filtro 'Medias' ativo.</p></div>
+      </a>
+      <a class="card" href="html/vulnerabilidades-filtro-baixas.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Filtro%20Baixas.svg" alt="Vuln. - filtro Baixas"></div>
+        <div class="meta"><h3>Vuln. - filtro Baixas</h3><p>Vulnerabilidades com filtro 'Baixas' ativo.</p></div>
+      </a>
+    </div>
+
+    <h2>Marca</h2>
+    <div class="grid">
+      <a class="card" href="html/logo-fundo-preto.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Logo%20Fundo%20Preto.svg" alt="Logo (fundo preto)"></div>
+        <div class="meta"><h3>Logo (fundo preto)</h3><p>Logo completo Moscow Cyber Security sobre fundo preto.</p></div>
+      </a>
+      <a class="card" href="html/logo-fundo-branco.html">
+        <div class="thumb" style="background:#f4f4f5;"><img src="assets/svg/Logo%20Fundo%20Branco.svg" alt="Logo (fundo branco)"></div>
+        <div class="meta"><h3>Logo (fundo branco)</h3><p>Logo completo Moscow Cyber Security sobre fundo branco.</p></div>
+      </a>
+      <a class="card" href="html/icone-sem-texto.html">
+        <div class="thumb" style="background:#0f0f11;"><img src="assets/svg/Icone%20Sem%20Texto.svg" alt="Icone (sem texto)"></div>
+        <div class="meta"><h3>Icone (sem texto)</h3><p>Simbolo/marca 'M' sem texto - ideal para favicon e avatar.</p></div>
+      </a>
+    </div>
+</main>
+  <footer>Moscow Cyber Security © 2026 · 15 artefatos · SVGs originais em <code>assets/svg/</code></footer>
+</body>
+</html>

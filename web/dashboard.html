@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html" aria-current="page">Dashboard</a>
+      <a class="nav-link" href="varreduras.html">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html">Ativos</a>
+      <a class="nav-link" href="usuarios.html">Usuarios</a>
+      <a class="nav-link" href="relatorios.html">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-greeting">Olá, <span id="userName">Leonardo</span>
+        <button type="button" id="logoutBtn" class="link-btn">Sair</button>
+      </div>
+      <input type="search" class="topbar-search" data-search-input placeholder="Buscar IP, dominio, hash…">
+    </header>
+
+    <main class="content">
+      <section class="kpi-grid" aria-label="Indicadores principais">
+        <div class="kpi-card">
+          <span class="kpi-dot dot-red"></span>
+          <div class="kpi-value">1.247</div>
+          <div class="kpi-label">Ameacas Bloqueadas</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-dot dot-orange"></span>
+          <div class="kpi-value">38</div>
+          <div class="kpi-label">Vulnerabilidades Criticas</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-dot dot-blue"></span>
+          <div class="kpi-value">156</div>
+          <div class="kpi-label">Ativos Monitorados</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-dot dot-green"></span>
+          <div class="kpi-value">87%</div>
+          <div class="kpi-label">Score de Seguranca</div>
+        </div>
+      </section>
+
+      <section class="panel-grid">
+        <div class="panel">
+          <h2 class="panel-title">Atividade de Rede</h2>
+          <div class="chart-wrap">
+            <p class="chart-title">Pulse of the week</p>
+            <p class="chart-legend"><span class="swatch"></span> Trafego (MB)</p>
+            <svg viewBox="0 0 720 260" role="img" aria-label="Gráfico de tráfego de rede na semana">
+              <line x1="46" y1="20" x2="46" y2="210" stroke="#232326"></line>
+              <g stroke="#1c1c20">
+                <line x1="46" y1="20" x2="710" y2="20"></line>
+                <line x1="46" y1="58" x2="710" y2="58"></line>
+                <line x1="46" y1="96" x2="710" y2="96"></line>
+                <line x1="46" y1="134" x2="710" y2="134"></line>
+                <line x1="46" y1="172" x2="710" y2="172"></line>
+                <line x1="46" y1="210" x2="710" y2="210"></line>
+              </g>
+              <g fill="#8a8a90" font-size="11" font-family="inherit" text-anchor="end">
+                <text x="38" y="24">1.000</text>
+                <text x="38" y="62">800</text>
+                <text x="38" y="100">600</text>
+                <text x="38" y="138">400</text>
+                <text x="38" y="176">200</text>
+                <text x="38" y="214">0</text>
+              </g>
+              <polyline points="86,144 191,120 296,132 401,90 506,58 611,100 706,166"
+                        fill="none" stroke="#e5484d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+              <g fill="#e5484d">
+                <circle cx="86" cy="144" r="4"></circle>
+                <circle cx="191" cy="120" r="4"></circle>
+                <circle cx="296" cy="132" r="4"></circle>
+                <circle cx="401" cy="90" r="4"></circle>
+                <circle cx="506" cy="58" r="4"></circle>
+                <circle cx="611" cy="100" r="4"></circle>
+                <circle cx="706" cy="166" r="4"></circle>
+              </g>
+              <g fill="#8a8a90" font-size="11" text-anchor="middle">
+                <text x="86" y="232">3 de ago.</text>
+                <text x="191" y="232">4 de ago.</text>
+                <text x="296" y="232">5 de ago.</text>
+                <text x="401" y="232">6 de ago.</text>
+                <text x="506" y="232">7 de ago.</text>
+                <text x="611" y="232">8 de ago.</text>
+                <text x="706" y="232">9 de ago.</text>
+              </g>
+            </svg>
+            <p class="chart-caption">Fonte: dados gerados por IA. Antes de usar o elemento, substitua ou verifique os dados.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">Mapa de Ameacas</h2>
+          <div class="threat-map" role="img" aria-label="Mapa ilustrativo de origem de ameaças detectadas">
+            <svg class="threat-map-bg" viewBox="0 0 400 250" aria-hidden="true">
+              <g stroke="#e5484d" stroke-width="1.4" fill="none" opacity=".85">
+                <path d="M110,150 C160,90 230,70 300,60"></path>
+                <path d="M110,150 C170,130 250,150 330,110"></path>
+                <path d="M110,150 C150,170 220,190 280,170"></path>
+              </g>
+              <g fill="#e5484d">
+                <circle cx="300" cy="60" r="3"></circle>
+                <circle cx="330" cy="110" r="2.5"></circle>
+                <circle cx="280" cy="170" r="2.5"></circle>
+                <circle cx="250" cy="150" r="2"></circle>
+                <circle cx="200" cy="55" r="2"></circle>
+              </g>
+            </svg>
+            <svg class="threat-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"></path>
+              <circle cx="12" cy="10" r="2.4" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-grid">
+        <div class="panel" data-search-table>
+          <h2 class="panel-title">Varreduras Recentes</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Alvo</th><th>Status</th><th>Severidade</th><th>Data</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>192.168.1.45</td><td class="status-text status-concluido">Concluido</td><td class="sev-text sev-critico">Critico</td><td class="cell-muted">09/08/2026</td></tr>
+                <tr><td>10.0.0.12</td><td class="status-text status-concluido">Concluido</td><td class="sev-text sev-alto">Alto</td><td class="cell-muted">08/08/2026</td></tr>
+                <tr><td>172.16.0.8</td><td class="status-text status-em-progresso">Em andamento</td><td class="sev-text sev-medio">Medio</td><td class="cell-muted">08/08/2026</td></tr>
+                <tr><td>192.168.2.100</td><td class="status-text status-concluido">Concluido</td><td class="sev-text sev-baixo">Baixo</td><td class="cell-muted">07/08/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">Alertas em Tempo Real</h2>
+          <ul class="alert-list">
+            <li class="alert-item" data-level="critical">
+              <div><div class="alert-text">SQL Injection detectado - 192.168.0.45</div><div class="alert-time">14:32</div></div>
+            </li>
+            <li class="alert-item" data-level="warn">
+              <div><div class="alert-text">Brute Force - porta 22 exposta</div><div class="alert-time">13:58</div></div>
+            </li>
+            <li class="alert-item" data-level="caution">
+              <div><div class="alert-text">Certificado SSL expira em 7 dias</div><div class="alert-time">12:15</div></div>
+            </li>
+            <li class="alert-item" data-level="ok">
+              <div><div class="alert-text">Scan de portas detectado</div><div class="alert-time">11:40</div></div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

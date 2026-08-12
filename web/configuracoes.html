@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuracoes — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="varreduras.html">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html">Ativos</a>
+      <a class="nav-link" href="usuarios.html">Usuarios</a>
+      <a class="nav-link" href="relatorios.html">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html" aria-current="page">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar-title">Configuracoes</h1>
+    </header>
+
+    <main class="content">
+      <div class="settings-card">
+        <h2>Geral</h2>
+        <div class="settings-row">
+          <span class="settings-row-label">Nome da Organizacao</span>
+          <span class="settings-row-value"><input type="text" value="Moscow Cyber Security"></span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Fuso Horario</span>
+          <span class="settings-row-value">
+            <select>
+              <option selected>America/Sao_Paulo (UTC-3)</option>
+              <option>America/New_York (UTC-4)</option>
+              <option>Europe/Lisbon (UTC+1)</option>
+            </select>
+          </span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Idioma</span>
+          <span class="settings-row-value">
+            <select>
+              <option selected>Portugues (BR)</option>
+              <option>English (US)</option>
+              <option>Espanol</option>
+            </select>
+          </span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Tema</span>
+          <span class="settings-row-value">
+            <select>
+              <option selected>Escuro</option>
+              <option>Claro</option>
+              <option>Automatico</option>
+            </select>
+          </span>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h2>Notificacoes</h2>
+        <div class="settings-row">
+          <span class="settings-row-label">Email de Alertas</span>
+          <span class="settings-row-value"><input type="text" value="alertas@moscow.sec"></span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Vulnerabilidades Criticas — Email + Push</span>
+          <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Relatorios Semanais — Toda segunda 08:00</span>
+          <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Novas Varreduras — Email</span>
+          <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h2>Integracao</h2>
+        <div class="settings-row">
+          <span class="settings-row-label">Slack — #security-alerts</span>
+          <span class="integration-status" data-state="connected"><span class="dot"></span>Conectado</span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Jira — Projeto MSEC</span>
+          <span class="integration-status" data-state="connected"><span class="dot"></span>Conectado</span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">PagerDuty</span>
+          <span class="integration-status" data-state="disconnected"><span class="dot"></span>Desconectado</span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Webhook</span>
+          <span class="settings-row-value"><input type="text" value="https://api.moscow.sec/webhook"></span>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h2>Seguranca</h2>
+        <div class="settings-row">
+          <span class="settings-row-label">Autenticacao 2FA — Obrigatorio para todos</span>
+          <label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Sessao Timeout</span>
+          <span class="settings-row-value">
+            <select>
+              <option>15 minutos</option>
+              <option selected>30 minutos</option>
+              <option>60 minutos</option>
+            </select>
+          </span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">IP Whitelist — 3 enderecos configurados</span>
+          <span class="settings-row-value"><button type="button" class="btn btn-secondary" id="manageIpWhitelist">Gerenciar</button></span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-row-label">Logs de Auditoria — Retencao</span>
+          <span class="settings-row-value">
+            <select>
+              <option>90 dias</option>
+              <option selected>365 dias</option>
+              <option>Indeterminado</option>
+            </select>
+          </span>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  document.querySelectorAll('.settings-card input, .settings-card select').forEach(function (el) {
+    var event = el.tagName === 'SELECT' ? 'change' : (el.type === 'checkbox' ? 'change' : 'blur');
+    el.addEventListener(event, function () {
+      window.Moscow.showToast('Preferência atualizada.');
+    });
+  });
+  var ipBtn = document.getElementById('manageIpWhitelist');
+  if (ipBtn) ipBtn.addEventListener('click', function () {
+    alert('Gestao de IP whitelist ainda nao disponivel nesta demonstracao.');
+  });
+</script>
+</body>
+</html>

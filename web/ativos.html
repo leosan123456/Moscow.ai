@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ativos — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="varreduras.html">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html" aria-current="page">Ativos</a>
+      <a class="nav-link" href="usuarios.html">Usuarios</a>
+      <a class="nav-link" href="relatorios.html">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar-title">Ativos</h1>
+      <div class="topbar-spacer"></div>
+      <button type="button" class="btn btn-primary" data-open-modal="modalNovoAtivo">+ Novo Ativo</button>
+    </header>
+
+    <main class="content">
+      <section class="kpi-grid">
+        <div class="kpi-card"><span class="kpi-dot dot-green"></span><div class="kpi-value">48</div><div class="kpi-label">Total de Ativos</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-blue"></span><div class="kpi-value">32</div><div class="kpi-label">Servidores</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-orange"></span><div class="kpi-value">12</div><div class="kpi-label">Aplicacoes Web</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-red"></span><div class="kpi-value">4</div><div class="kpi-label">APIs</div></div>
+      </section>
+
+      <section class="panel" data-search-table>
+        <h2 class="panel-title">Inventario de Ativos</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="assetsTable">
+            <thead><tr><th>Ativo</th><th>Tipo</th><th>IP / URL</th><th>SO / Stack</th><th>Vulnerabilidades</th><th>Risco</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>erp.empresa.com.br</td><td class="cell-muted">Web App</td><td class="cell-muted">10.0.1.15</td><td class="cell-muted">Linux / Java</td><td>23</td><td class="risk-critico">Critico</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>api.cliente.io</td><td class="cell-muted">API</td><td class="cell-muted">10.0.2.8</td><td class="cell-muted">Node.js / Express</td><td>8</td><td class="risk-alto">Alto</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>192.168.1.0/24</td><td class="cell-muted">Network</td><td class="cell-muted">192.168.1.0/24</td><td class="cell-muted">Mixed</td><td>15</td><td class="risk-alto">Alto</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>mail.empresa.com.br</td><td class="cell-muted">Servidor</td><td class="cell-muted">10.0.1.20</td><td class="cell-muted">Linux / Postfix</td><td>3</td><td class="risk-medio">Medio</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>cdn.cliente.com</td><td class="cell-muted">CDN</td><td class="cell-muted">CloudFlare</td><td class="cell-muted">Nginx</td><td>7</td><td class="risk-medio">Medio</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>vpn.empresa.com.br</td><td class="cell-muted">Network</td><td class="cell-muted">10.0.1.1</td><td class="cell-muted">FortiGate</td><td>2</td><td class="risk-baixo">Baixo</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>db.empresa.com.br</td><td class="cell-muted">Database</td><td class="cell-muted">10.0.3.5</td><td class="cell-muted">PostgreSQL 15</td><td>9</td><td class="risk-alto">Alto</td><td class="status-text status-online">Ativo</td></tr>
+              <tr><td>portal.cliente.io</td><td class="cell-muted">Web App</td><td class="cell-muted">10.0.2.12</td><td class="cell-muted">React / Django</td><td>31</td><td class="risk-critico">Critico</td><td class="status-text status-online">Ativo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="modalNovoAtivo">
+  <form method="dialog" data-row-template="#assetsTable tbody" data-success-message="Ativo adicionado ao inventário."
+        data-row-cells='[
+          {"field":"name"},
+          {"field":"type","className":"cell-muted"},
+          {"field":"address","className":"cell-muted"},
+          {"field":"stack","className":"cell-muted","fallback":"—"},
+          {"static":"0"},
+          {"static":"<span class=\"risk-baixo\">Baixo</span>"},
+          {"static":"<span class=\"status-text status-online\">Ativo</span>"}
+        ]'>
+    <div class="modal-head">
+      <h2>Novo Ativo</h2>
+      <button type="button" class="link-btn" data-close-modal>Fechar</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label for="assetName">Nome do ativo</label><input type="text" id="assetName" name="name" required placeholder="app.empresa.com.br"></div>
+      <div class="field">
+        <label for="assetType">Tipo</label>
+        <select id="assetType" name="type" required>
+          <option>Web App</option><option>API</option><option>Servidor</option><option>Network</option><option>CDN</option><option>Database</option>
+        </select>
+      </div>
+      <div class="field"><label for="assetAddress">IP / URL</label><input type="text" id="assetAddress" name="address" required placeholder="10.0.1.99"></div>
+      <div class="field"><label for="assetStack">SO / Stack</label><input type="text" id="assetStack" name="stack" placeholder="Linux / Node.js"></div>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+      <button type="submit" class="btn btn-primary">Adicionar Ativo</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>

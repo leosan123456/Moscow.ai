@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrar — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="login-shell">
+  <section class="login-visual" aria-hidden="true">
+    <div class="login-visual-copy">
+      <h1>Proteja seus<br>ativos digitais.</h1>
+      <p>Monitoramento 24/7 com inteligência artificial.</p>
+    </div>
+  </section>
+
+  <section class="login-form-side">
+    <div class="login-form-inner">
+      <div class="login-logo">
+        <img src="assets/logo-moscow.svg" alt="Moscow Cyber Security">
+      </div>
+
+      <div class="login-heading">
+        <h1>Bem-vindo de volta</h1>
+        <p>Acesse sua conta para continuar</p>
+      </div>
+
+      <p class="login-error" id="loginError" role="alert"></p>
+
+      <form class="login-form" id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="username" required placeholder="voce@empresa.com">
+        </div>
+        <div class="field">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required minlength="6" placeholder="••••••••">
+        </div>
+
+        <div class="login-row-between">
+          <a href="#" id="forgotPassword">Esqueceu a senha?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary login-submit">Entrar</button>
+
+        <div class="login-divider">ou continue com</div>
+
+        <div class="login-oauth">
+          <button type="button" class="oauth-btn" data-oauth="Google">Google</button>
+          <button type="button" class="oauth-btn" data-oauth="Microsoft">Microsoft</button>
+        </div>
+      </form>
+
+      <p class="login-footer">Moscow Cyber Security © 2026</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Já autenticado? não faz sentido mostrar o login de novo.
+  try {
+    var existing = JSON.parse(localStorage.getItem("moscow_session"));
+    if (existing && existing.email) window.location.href = "dashboard.html";
+  } catch (err) { /* sessão inválida, segue para o login normalmente */ }
+
+  var form = document.getElementById("loginForm");
+  var errorBox = document.getElementById("loginError");
+
+  function showError(message) {
+    errorBox.textContent = message;
+    errorBox.classList.add("is-visible");
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    errorBox.classList.remove("is-visible");
+
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError("Informe um e-mail válido.");
+      return;
+    }
+    if (!password || password.length < 6) {
+      showError("A senha precisa de ao menos 6 caracteres.");
+      return;
+    }
+
+    // Não há backend nesta implementação: qualquer credencial bem formada autentica.
+    // Ver web/README.md para o que seria necessário para autenticar de verdade contra
+    // services/backoffice/vulnai_backoffice/api.py.
+    var name = email.split("@")[0];
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    localStorage.setItem("moscow_session", JSON.stringify({ email: email, name: name }));
+    window.location.href = "dashboard.html";
+  });
+
+  document.getElementById("forgotPassword").addEventListener("click", function (event) {
+    event.preventDefault();
+    alert("Recuperação de senha ainda não disponível nesta demonstração.");
+  });
+
+  document.querySelectorAll("[data-oauth]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      alert("Login via " + btn.dataset.oauth + " ainda não disponível nesta demonstração.");
+    });
+  });
+})();
+</script>
+</body>
+</html>

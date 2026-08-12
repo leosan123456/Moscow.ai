@@ -1,0 +1,40 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Trilhas de auditoria e resultados de execução nunca vão para o repositório:
+# são dados de vulnerabilidade de cliente.
+*.jsonl
+*.db
+*.sqlite3
+audit/
+artifacts/
+reports/
+_alembic_scratch.db
+
+.env
+*.pem
+*.key
+secrets/
+
+.idea/
+.vscode/
+.DS_Store
+
+# Configuração local do Claude Code (específica da máquina, não do projeto)
+.claude/settings.local.json
+
+# Renders de calibração gerados durante a implementação da UI a partir dos SVGs
+# originais em moscow-ui/assets/svg/ — não fazem parte do design nem do código.
+moscow-ui/_preview_*.png
+moscow-ui/_p_*.png

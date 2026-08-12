@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatorios — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="varreduras.html">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html">Ativos</a>
+      <a class="nav-link" href="usuarios.html">Usuarios</a>
+      <a class="nav-link" href="relatorios.html" aria-current="page">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar-title">Relatorios</h1>
+      <div class="topbar-spacer"></div>
+      <button type="button" class="btn btn-primary" data-open-modal="modalGerarRelatorio">+ Gerar Relatorio</button>
+    </header>
+
+    <main class="content">
+      <section class="kpi-grid">
+        <div class="kpi-card"><span class="kpi-dot dot-blue"></span><div class="kpi-value">12</div><div class="kpi-label">Relatorios Gerados</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-green"></span><div class="kpi-value">3</div><div class="kpi-label">Agendados</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-orange"></span><div class="kpi-value">5</div><div class="kpi-label">Exportados (PDF)</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-yellow"></span><div class="kpi-value">2</div><div class="kpi-label">Pendentes</div></div>
+      </section>
+
+      <section class="panel" data-search-table>
+        <h2 class="panel-title">Historico de Relatorios</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="reportsTable">
+            <thead><tr><th>Nome</th><th>Tipo</th><th>Periodo</th><th>Gerado em</th><th>Formato</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Relatorio Executivo Mensal</td><td class="cell-muted">Executivo</td><td class="cell-muted">Jul/2026</td><td class="cell-muted">01/08/2026</td><td class="cell-muted">PDF</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>Varredura Completa - Q2</td><td class="cell-muted">Tecnico</td><td class="cell-muted">Abr-Jun/2026</td><td class="cell-muted">30/07/2026</td><td class="cell-muted">PDF</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>Compliance PCI-DSS</td><td class="cell-muted">Compliance</td><td class="cell-muted">Jul/2026</td><td class="cell-muted">28/07/2026</td><td class="cell-muted">PDF</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>Vulnerabilidades Criticas</td><td class="cell-muted">Tecnico</td><td class="cell-muted">Ago/2026</td><td class="cell-muted">09/08/2026</td><td class="cell-muted">PDF</td><td class="status-text status-em-progresso">Em progresso</td></tr>
+              <tr><td>Pentest Report - App Web</td><td class="cell-muted">Pentest</td><td class="cell-muted">Jul/2026</td><td class="cell-muted">25/07/2026</td><td class="cell-muted">DOCX</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>Risk Assessment Anual</td><td class="cell-muted">Executivo</td><td class="cell-muted">2026</td><td class="cell-muted">Agendado</td><td class="cell-muted">PDF</td><td class="status-text status-pendente">Pendente</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="modalGerarRelatorio">
+  <form method="dialog" data-row-template="#reportsTable tbody" data-success-message="Relatório em geração."
+        data-row-cells='[
+          {"field":"name"},
+          {"field":"type","className":"cell-muted"},
+          {"field":"period","className":"cell-muted"},
+          {"static":"agora"},
+          {"field":"format","className":"cell-muted"},
+          {"static":"<span class=\"status-text status-em-progresso\">Em progresso</span>"}
+        ]'>
+    <div class="modal-head">
+      <h2>Gerar Relatorio</h2>
+      <button type="button" class="link-btn" data-close-modal>Fechar</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label for="reportName">Nome do relatorio</label><input type="text" id="reportName" name="name" required placeholder="Relatorio Executivo Mensal"></div>
+      <div class="field">
+        <label for="reportType">Tipo</label>
+        <select id="reportType" name="type" required>
+          <option>Executivo</option><option>Tecnico</option><option>Compliance</option><option>Pentest</option>
+        </select>
+      </div>
+      <div class="field"><label for="reportPeriod">Periodo</label><input type="text" id="reportPeriod" name="period" required placeholder="Ago/2026"></div>
+      <div class="field">
+        <label for="reportFormat">Formato</label>
+        <select id="reportFormat" name="format" required>
+          <option>PDF</option><option>DOCX</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+      <button type="submit" class="btn btn-primary">Gerar Relatorio</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>

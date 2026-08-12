@@ -1,0 +1,60 @@
+[project]
+name = "vuln-ai-platform"
+version = "0.1.0"
+description = "Plataforma defensiva de análise de vulnerabilidades com IA"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+dependencies = [
+    "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.111", "uvicorn>=0.30"]
+db = ["sqlalchemy>=2.0", "alembic>=1.13", "psycopg[binary]>=3.1"]
+dev = ["pytest>=8.0", "mypy>=1.10", "ruff>=0.5"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [
+    "vulnai_shared",
+    "vulnai_authorization",
+    "vulnai_backoffice",
+    "vulnai_discovery",
+    "vulnai_collection",
+    "vulnai_persistence",
+]
+
+[tool.setuptools.package-dir]
+vulnai_shared = "shared/vulnai_shared"
+vulnai_authorization = "services/authorization/vulnai_authorization"
+vulnai_backoffice = "services/backoffice/vulnai_backoffice"
+vulnai_discovery = "services/discovery/vulnai_discovery"
+vulnai_collection = "services/collection/vulnai_collection"
+vulnai_persistence = "shared/vulnai_persistence"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "shared",
+    "services/authorization",
+    "services/backoffice",
+    "services/discovery",
+    "services/collection",
+]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S", "RUF"]
+ignore = ["S101"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "shared:services/authorization:services/backoffice"

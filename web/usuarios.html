@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usuarios — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="varreduras.html">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html">Ativos</a>
+      <a class="nav-link" href="usuarios.html" aria-current="page">Usuarios</a>
+      <a class="nav-link" href="relatorios.html">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar-title">Usuarios</h1>
+      <div class="topbar-spacer"></div>
+      <button type="button" class="btn btn-primary" data-open-modal="modalNovoUsuario">+ Novo Usuario</button>
+    </header>
+
+    <main class="content">
+      <section class="kpi-grid">
+        <div class="kpi-card"><span class="kpi-dot dot-green"></span><div class="kpi-value">12</div><div class="kpi-label">Total Usuarios</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-blue"></span><div class="kpi-value">8</div><div class="kpi-label">Ativos Agora</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-orange"></span><div class="kpi-value">3</div><div class="kpi-label">Administradores</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-red"></span><div class="kpi-value">1</div><div class="kpi-label">Bloqueados</div></div>
+      </section>
+
+      <section class="panel" data-search-table>
+        <h2 class="panel-title">Gerenciamento de Usuarios</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="usersTable">
+            <thead><tr><th>Nome</th><th>Email</th><th>Cargo</th><th>Ultimo Acesso</th><th>Status</th><th>Permissao</th></tr></thead>
+            <tbody>
+              <tr><td>Leonardo Souza</td><td class="cell-muted">leonardo@moscow.sec</td><td class="cell-muted">CEO / Admin</td><td class="cell-muted">12/08 - 09:15</td><td class="status-text status-online">Online</td><td>Admin</td></tr>
+              <tr><td>Carlos Mendes</td><td class="cell-muted">carlos@moscow.sec</td><td class="cell-muted">Analista Senior</td><td class="cell-muted">12/08 - 08:50</td><td class="status-text status-online">Online</td><td>Editor</td></tr>
+              <tr><td>Ana Rodrigues</td><td class="cell-muted">ana@moscow.sec</td><td class="cell-muted">Pentester</td><td class="cell-muted">11/08 - 18:30</td><td class="status-text status-offline">Offline</td><td>Editor</td></tr>
+              <tr><td>Rafael Costa</td><td class="cell-muted">rafael@moscow.sec</td><td class="cell-muted">Analista Jr</td><td class="cell-muted">12/08 - 07:00</td><td class="status-text status-online">Online</td><td>Viewer</td></tr>
+              <tr><td>Juliana Lima</td><td class="cell-muted">juliana@moscow.sec</td><td class="cell-muted">DevSecOps</td><td class="cell-muted">10/08 - 14:20</td><td class="status-text status-offline">Offline</td><td>Editor</td></tr>
+              <tr><td>Pedro Santos</td><td class="cell-muted">pedro@moscow.sec</td><td class="cell-muted">Infra Security</td><td class="cell-muted">12/08 - 09:00</td><td class="status-text status-online">Online</td><td>Editor</td></tr>
+              <tr><td>Mariana Alves</td><td class="cell-muted">mariana@moscow.sec</td><td class="cell-muted">Compliance</td><td class="cell-muted">09/08 - 11:45</td><td class="status-text status-offline">Offline</td><td>Viewer</td></tr>
+              <tr><td>Thiago Ferreira</td><td class="cell-muted">thiago@moscow.sec</td><td class="cell-muted">Red Team</td><td class="cell-muted">12/08 - 08:30</td><td class="status-text status-online">Online</td><td>Editor</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="modalNovoUsuario">
+  <form method="dialog" data-row-template="#usersTable tbody" data-success-message="Usuário convidado."
+        data-row-cells='[
+          {"field":"name"},
+          {"field":"email","className":"cell-muted"},
+          {"field":"role","className":"cell-muted"},
+          {"static":"—"},
+          {"static":"<span class=\"status-text status-offline\">Offline</span>"},
+          {"field":"permission"}
+        ]'>
+    <div class="modal-head">
+      <h2>Novo Usuario</h2>
+      <button type="button" class="link-btn" data-close-modal>Fechar</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label for="userName">Nome</label><input type="text" id="userName" name="name" required placeholder="Nome completo"></div>
+      <div class="field"><label for="userEmail">Email</label><input type="email" id="userEmail" name="email" required placeholder="nome@moscow.sec"></div>
+      <div class="field"><label for="userRole">Cargo</label><input type="text" id="userRole" name="role" required placeholder="Analista Jr"></div>
+      <div class="field">
+        <label for="userPermission">Permissao</label>
+        <select id="userPermission" name="permission" required>
+          <option>Viewer</option><option>Editor</option><option>Admin</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+      <button type="submit" class="btn btn-primary">Convidar Usuario</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>

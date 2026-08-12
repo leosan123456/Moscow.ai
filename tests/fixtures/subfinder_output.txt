@@ -1,0 +1,8 @@
+api.acme.example
+www.acme.example
+API.Acme.Example
+pagamentos.acme.example
+cdn.terceiro.example
+*.acme.example
+staging.acme.example
+

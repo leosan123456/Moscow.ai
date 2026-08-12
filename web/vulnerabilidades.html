@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vulnerabilidades — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="varreduras.html">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html" aria-current="page">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html">Ativos</a>
+      <a class="nav-link" href="usuarios.html">Usuarios</a>
+      <a class="nav-link" href="relatorios.html">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar-title" id="pageTitle">Vulnerabilidades</h1>
+      <div class="topbar-spacer"></div>
+      <div class="filter-tabs" role="tablist" aria-label="Filtrar por severidade">
+        <button class="filter-tab" type="button" role="tab" data-tab="todas" aria-selected="true">Todas</button>
+        <button class="filter-tab" type="button" role="tab" data-tab="criticas" aria-selected="false">Criticas</button>
+        <button class="filter-tab" type="button" role="tab" data-tab="altas" aria-selected="false">Altas</button>
+        <button class="filter-tab" type="button" role="tab" data-tab="medias" aria-selected="false">Medias</button>
+        <button class="filter-tab" type="button" role="tab" data-tab="baixas" aria-selected="false">Baixas</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ============================================================ TODAS -->
+      <div class="vuln-view" data-view="todas">
+        <section class="kpi-grid">
+          <div class="kpi-card"><span class="kpi-dot dot-gray"></span><div class="kpi-value">127</div><div class="kpi-label">Total Vulnerabilidades</div></div>
+          <div class="kpi-card"><span class="kpi-dot dot-red"></span><div class="kpi-value">18</div><div class="kpi-label">Criticas</div></div>
+          <div class="kpi-card"><span class="kpi-dot dot-orange"></span><div class="kpi-value">34</div><div class="kpi-label">Altas</div></div>
+          <div class="kpi-card"><span class="kpi-dot dot-yellow"></span><div class="kpi-value">75</div><div class="kpi-label">Medias / Baixas</div></div>
+        </section>
+
+        <section class="panel-grid" style="margin-top:18px">
+          <div class="panel">
+            <h2 class="panel-title">Distribuicao por Severidade</h2>
+            <div class="donut-row">
+              <div class="donut" style="background:conic-gradient(var(--sev-critical) 0% 14.2%, var(--sev-high) 14.2% 41%, var(--sev-medium) 41% 76.4%, var(--sev-low) 76.4% 100%)"></div>
+              <ul class="donut-legend">
+                <li><span class="swatch" style="background:var(--sev-critical)"></span> Critical <b>14,2%</b></li>
+                <li><span class="swatch" style="background:var(--sev-high)"></span> High <b>26,8%</b></li>
+                <li><span class="swatch" style="background:var(--sev-medium)"></span> Medium <b>35,4%</b></li>
+                <li><span class="swatch" style="background:var(--sev-low)"></span> Low <b>23,6%</b></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel-title">Vulnerabilidades Criticas Recentes</h2>
+            <ul class="list-plain">
+              <li class="cve-item"><div class="cve-main"><div class="cve-title">CVE-2026-4521 - SQL Injection</div><div class="cve-sub">erp.empresa.com.br</div></div><span class="cvss-chip">9.8</span></li>
+              <li class="cve-item"><div class="cve-main"><div class="cve-title">CVE-2026-3892 - RCE via Deserialization</div><div class="cve-sub">api.cliente.io</div></div><span class="cvss-chip">9.6</span></li>
+              <li class="cve-item"><div class="cve-main"><div class="cve-title">CVE-2026-2104 - Auth Bypass</div><div class="cve-sub">portal.cliente.io</div></div><span class="cvss-chip">9.1</span></li>
+              <li class="cve-item"><div class="cve-main"><div class="cve-title">CVE-2026-1887 - SSRF</div><div class="cve-sub">app.empresa.com.br</div></div><span class="cvss-chip">8.9</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:18px" data-search-table>
+          <h2 class="panel-title">Todas as Vulnerabilidades</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>CVE</th><th>Descricao</th><th>Ativo Afetado</th><th>CVSS</th><th>Severidade</th><th>Status</th><th>Descoberta</th></tr></thead>
+              <tbody>
+                <tr><td>CVE-2026-4521</td><td>SQL Injection em parametro de busca</td><td class="cell-muted">erp.empresa.com.br</td><td>9.8</td><td class="sev-text sev-critico">Critico</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">09/08/2026</td></tr>
+                <tr><td>CVE-2026-3892</td><td>RCE via deserialization</td><td class="cell-muted">api.cliente.io</td><td>9.6</td><td class="sev-text sev-critico">Critico</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">08/08/2026</td></tr>
+                <tr><td>CVE-2026-2104</td><td>Authentication Bypass via token replay</td><td class="cell-muted">portal.cliente.io</td><td>9.1</td><td class="sev-text sev-critico">Critico</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">07/08/2026</td></tr>
+                <tr><td>CVE-2026-1887</td><td>Server-Side Request Forgery (SSRF)</td><td class="cell-muted">app.empresa.com.br</td><td>8.9</td><td class="sev-text sev-alto">Alto</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">06/08/2026</td></tr>
+                <tr><td>CVE-2026-1654</td><td>Cross-Site Scripting (XSS) persistente</td><td class="cell-muted">cdn.cliente.com</td><td>7.5</td><td class="sev-text sev-alto">Alto</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">05/08/2026</td></tr>
+                <tr><td>CVE-2026-1432</td><td>Information Disclosure via error handling</td><td class="cell-muted">vpn.empresa.com.br</td><td>5.3</td><td class="sev-text sev-medio">Medio</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">04/08/2026</td></tr>
+                <tr><td>CVE-2026-1201</td><td>Missing rate limiting em login</td><td class="cell-muted">mail.empresa.com.br</td><td>4.2</td><td class="sev-text sev-medio">Medio</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">03/08/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========================================================= CRITICAS -->
+      <div class="vuln-view" data-view="criticas" hidden>
+        <section class="kpi-grid">
+          <div class="kpi-card"><span class="kpi-dot dot-red"></span><div class="kpi-value">18</div><div class="kpi-label">Vulnerabilidades Criticas</div></div>
+        </section>
+        <section class="panel" style="margin-top:18px" data-search-table>
+          <h2 class="panel-title">Vulnerabilidades Criticas</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>CVE</th><th>Descricao</th><th>Ativo Afetado</th><th>CVSS</th><th>Status</th><th>Descoberta</th></tr></thead>
+              <tbody>
+                <tr><td>CVE-2026-4521</td><td>SQL Injection em parametro de busca</td><td class="cell-muted">erp.empresa.com.br</td><td>9.8</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">09/08/2026</td></tr>
+                <tr><td>CVE-2026-3892</td><td>RCE via deserialization</td><td class="cell-muted">api.cliente.io</td><td>9.6</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">08/08/2026</td></tr>
+                <tr><td>CVE-2026-2104</td><td>Auth Bypass via token replay</td><td class="cell-muted">portal.cliente.io</td><td>9.1</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">07/08/2026</td></tr>
+                <tr><td>CVE-2026-1990</td><td>RCE via file upload</td><td class="cell-muted">cdn.empresa.com.br</td><td>9.8</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">06/08/2026</td></tr>
+                <tr><td>CVE-2026-1845</td><td>Privilege Escalation via IDOR</td><td class="cell-muted">admin.cliente.io</td><td>9.4</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">05/08/2026</td></tr>
+                <tr><td>CVE-2026-1732</td><td>Command Injection em API</td><td class="cell-muted">api.empresa.com.br</td><td>9.2</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">04/08/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- ============================================================ ALTAS -->
+      <div class="vuln-view" data-view="altas" hidden>
+        <section class="kpi-grid">
+          <div class="kpi-card"><span class="kpi-dot dot-orange"></span><div class="kpi-value">34</div><div class="kpi-label">Vulnerabilidades Altas</div></div>
+        </section>
+        <section class="panel" style="margin-top:18px" data-search-table>
+          <h2 class="panel-title">Vulnerabilidades Altas</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>CVE</th><th>Descricao</th><th>Ativo Afetado</th><th>CVSS</th><th>Status</th><th>Descoberta</th></tr></thead>
+              <tbody>
+                <tr><td>CVE-2026-1887</td><td>Server-Side Request Forgery</td><td class="cell-muted">app.empresa.com.br</td><td>8.9</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">06/08/2026</td></tr>
+                <tr><td>CVE-2026-1654</td><td>XSS persistente em comentarios</td><td class="cell-muted">cdn.cliente.com</td><td>7.5</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">05/08/2026</td></tr>
+                <tr><td>CVE-2026-1598</td><td>Broken Access Control</td><td class="cell-muted">portal.empresa.com.br</td><td>8.2</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">04/08/2026</td></tr>
+                <tr><td>CVE-2026-1487</td><td>XML External Entity (XXE)</td><td class="cell-muted">api.cliente.io</td><td>7.8</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">03/08/2026</td></tr>
+                <tr><td>CVE-2026-1356</td><td>Insecure Direct Object Reference</td><td class="cell-muted">erp.empresa.com.br</td><td>7.3</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">02/08/2026</td></tr>
+                <tr><td>CVE-2026-1290</td><td>Path Traversal em file upload</td><td class="cell-muted">storage.empresa.com.br</td><td>8.1</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">01/08/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- =========================================================== MEDIAS -->
+      <div class="vuln-view" data-view="medias" hidden>
+        <section class="kpi-grid">
+          <div class="kpi-card"><span class="kpi-dot dot-yellow"></span><div class="kpi-value">45</div><div class="kpi-label">Vulnerabilidades Medias</div></div>
+        </section>
+        <section class="panel" style="margin-top:18px" data-search-table>
+          <h2 class="panel-title">Vulnerabilidades Medias</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>CVE</th><th>Descricao</th><th>Ativo Afetado</th><th>CVSS</th><th>Status</th><th>Descoberta</th></tr></thead>
+              <tbody>
+                <tr><td>CVE-2026-1432</td><td>Information Disclosure via error</td><td class="cell-muted">vpn.empresa.com.br</td><td>5.3</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">04/08/2026</td></tr>
+                <tr><td>CVE-2026-1201</td><td>Missing rate limiting em login</td><td class="cell-muted">mail.empresa.com.br</td><td>4.2</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">03/08/2026</td></tr>
+                <tr><td>CVE-2026-1150</td><td>CORS misconfiguration</td><td class="cell-muted">api.empresa.com.br</td><td>5.8</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">02/08/2026</td></tr>
+                <tr><td>CVE-2026-1098</td><td>Session fixation</td><td class="cell-muted">portal.cliente.io</td><td>5.1</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">01/08/2026</td></tr>
+                <tr><td>CVE-2026-1045</td><td>Clickjacking em pagina admin</td><td class="cell-muted">admin.empresa.com.br</td><td>4.7</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">31/07/2026</td></tr>
+                <tr><td>CVE-2026-0987</td><td>HTTP Response Splitting</td><td class="cell-muted">cdn.cliente.com</td><td>5.5</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">30/07/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- =========================================================== BAIXAS -->
+      <div class="vuln-view" data-view="baixas" hidden>
+        <section class="kpi-grid">
+          <div class="kpi-card"><span class="kpi-dot dot-green"></span><div class="kpi-value">30</div><div class="kpi-label">Vulnerabilidades Baixas</div></div>
+        </section>
+        <section class="panel" style="margin-top:18px" data-search-table>
+          <h2 class="panel-title">Vulnerabilidades Baixas</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>CVE</th><th>Descricao</th><th>Ativo Afetado</th><th>CVSS</th><th>Status</th><th>Descoberta</th></tr></thead>
+              <tbody>
+                <tr><td>CVE-2026-0876</td><td>Cookie sem flag HttpOnly</td><td class="cell-muted">app.empresa.com.br</td><td>3.1</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">03/08/2026</td></tr>
+                <tr><td>CVE-2026-0812</td><td>Header X-Frame-Options ausente</td><td class="cell-muted">portal.empresa.com.br</td><td>2.8</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">02/08/2026</td></tr>
+                <tr><td>CVE-2026-0754</td><td>Versao de servidor exposta</td><td class="cell-muted">mail.empresa.com.br</td><td>2.1</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">01/08/2026</td></tr>
+                <tr><td>CVE-2026-0698</td><td>DNS Zone Transfer permitido</td><td class="cell-muted">ns1.empresa.com.br</td><td>3.5</td><td class="status-text status-em-correcao">Em correcao</td><td class="cell-muted">31/07/2026</td></tr>
+                <tr><td>CVE-2026-0621</td><td>TLS 1.0 ainda habilitado</td><td class="cell-muted">vpn.empresa.com.br</td><td>3.0</td><td class="status-text status-corrigida">Corrigida</td><td class="cell-muted">30/07/2026</td></tr>
+                <tr><td>CVE-2026-0589</td><td>Autocomplete em campo senha</td><td class="cell-muted">erp.empresa.com.br</td><td>1.9</td><td class="status-text status-aberta">Aberta</td><td class="cell-muted">29/07/2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/vulnerabilidades.js"></script>
+</body>
+</html>

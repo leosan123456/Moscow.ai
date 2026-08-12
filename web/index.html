@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<meta http-equiv="refresh" content="0; url=login.html">
+</head>
+<body style="background:#0a0a0b">
+<script>
+  try {
+    var session = JSON.parse(localStorage.getItem("moscow_session"));
+    window.location.replace(session && session.email ? "dashboard.html" : "login.html");
+  } catch (err) {
+    window.location.replace("login.html");
+  }
+</script>
+<noscript><a href="login.html">Entrar</a></noscript>
+</body>
+</html>

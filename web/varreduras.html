@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Varreduras — Moscow Cyber Security</title>
+<link rel="icon" href="assets/icone-moscow.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-requires-auth>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html"><img src="assets/icone-moscow.svg" alt="Moscow Cyber Security"></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="varreduras.html" aria-current="page">Varreduras</a>
+      <a class="nav-link" href="vulnerabilidades.html">Vulnerabilidades</a>
+      <a class="nav-link" href="ativos.html">Ativos</a>
+      <a class="nav-link" href="usuarios.html">Usuarios</a>
+      <a class="nav-link" href="relatorios.html">Relatorios</a>
+      <a class="nav-link" href="configuracoes.html">Configuracoes</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar-title">Varreduras</h1>
+      <div class="topbar-spacer"></div>
+      <button type="button" class="btn btn-primary" data-open-modal="modalNovaVarredura">+ Nova Varredura</button>
+    </header>
+
+    <main class="content">
+      <section class="kpi-grid">
+        <div class="kpi-card"><span class="kpi-dot dot-green"></span><div class="kpi-value">24</div><div class="kpi-label">Varreduras Ativas</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-blue"></span><div class="kpi-value">156</div><div class="kpi-label">Concluidas (30d)</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-red"></span><div class="kpi-value">12</div><div class="kpi-label">Falhas Criticas</div></div>
+        <div class="kpi-card"><span class="kpi-dot dot-orange"></span><div class="kpi-value">3h 42m</div><div class="kpi-label">Tempo Medio</div></div>
+      </section>
+
+      <section class="panel" data-search-table>
+        <h2 class="panel-title">Varreduras em Andamento</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="scansInProgress">
+            <thead><tr><th>Alvo</th><th>Tipo</th><th>Progresso</th><th>Inicio</th><th>Vulnerabilidades</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>app.empresa.com.br</td><td class="cell-muted">Web Application</td>
+                <td><div class="progress-cell"><span class="progress-value" style="color:var(--sev-high)">78%</span><div class="progress-track"><div class="progress-fill" data-tone="warn" style="width:78%"></div></div></div></td>
+                <td class="cell-muted">09/08 - 10:15</td><td>5</td><td class="status-text status-executando">Executando</td>
+              </tr>
+              <tr>
+                <td>192.168.1.0/24</td><td class="cell-muted">Network Scan</td>
+                <td><div class="progress-cell"><span class="progress-value" style="color:var(--sev-high)">45%</span><div class="progress-track"><div class="progress-fill" data-tone="warn" style="width:45%"></div></div></div></td>
+                <td class="cell-muted">09/08 - 09:30</td><td>12</td><td class="status-text status-executando">Executando</td>
+              </tr>
+              <tr>
+                <td>api.cliente.io</td><td class="cell-muted">API Security</td>
+                <td><div class="progress-cell"><span class="progress-value" style="color:var(--status-ok)">92%</span><div class="progress-track"><div class="progress-fill" data-tone="ok" style="width:92%"></div></div></div></td>
+                <td class="cell-muted">09/08 - 08:00</td><td>2</td><td class="status-text status-finalizando">Finalizando</td>
+              </tr>
+              <tr>
+                <td>mail.empresa.com.br</td><td class="cell-muted">Infrastructure</td>
+                <td><div class="progress-cell"><span class="progress-value" style="color:var(--sev-medium)">15%</span><div class="progress-track"><div class="progress-fill" data-tone="start" style="width:15%"></div></div></div></td>
+                <td class="cell-muted">09/08 - 11:00</td><td>0</td><td class="status-text status-iniciando">Iniciando</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" data-search-table>
+        <h2 class="panel-title">Historico de Varreduras</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Alvo</th><th>Tipo</th><th>Severidade</th><th>Vulnerabilidades</th><th>Duracao</th><th>Data</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>erp.empresa.com.br</td><td class="cell-muted">Web App</td><td class="sev-text sev-critico">Critico</td><td>23</td><td class="cell-muted">4h 12m</td><td class="cell-muted">08/08/2026</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>10.0.0.0/16</td><td class="cell-muted">Network</td><td class="sev-text sev-alto">Alto</td><td>15</td><td class="cell-muted">2h 45m</td><td class="cell-muted">07/08/2026</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>cdn.cliente.com</td><td class="cell-muted">Infrastructure</td><td class="sev-text sev-medio">Medio</td><td>7</td><td class="cell-muted">1h 30m</td><td class="cell-muted">06/08/2026</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>vpn.empresa.com.br</td><td class="cell-muted">Network</td><td class="sev-text sev-baixo">Baixo</td><td>2</td><td class="cell-muted">55m</td><td class="cell-muted">05/08/2026</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>portal.cliente.io</td><td class="cell-muted">Web App</td><td class="sev-text sev-critico">Critico</td><td>31</td><td class="cell-muted">5h 20m</td><td class="cell-muted">04/08/2026</td><td class="status-text status-concluido">Concluido</td></tr>
+              <tr><td>db.empresa.com.br</td><td class="cell-muted">Database</td><td class="sev-text sev-alto">Alto</td><td>9</td><td class="cell-muted">3h 10m</td><td class="cell-muted">03/08/2026</td><td class="status-text status-concluido">Concluido</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="modalNovaVarredura">
+  <form method="dialog" data-row-template="#scansInProgress tbody" data-success-message="Varredura iniciada."
+        data-row-cells='[
+          {"field":"target"},
+          {"field":"type","className":"cell-muted"},
+          {"static":"<div class=\"progress-cell\"><span class=\"progress-value\" style=\"color:var(--sev-medium)\">0%</span><div class=\"progress-track\"><div class=\"progress-fill\" data-tone=\"start\" style=\"width:2%\"></div></div></div>"},
+          {"static":"agora"},
+          {"static":"0"},
+          {"static":"<span class=\"status-text status-iniciando\">Iniciando</span>"}
+        ]'>
+    <div class="modal-head">
+      <h2>Nova Varredura</h2>
+      <button type="button" class="link-btn" data-close-modal>Fechar</button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label for="scanTarget">Alvo (IP, dominio ou CIDR)</label>
+        <input type="text" id="scanTarget" name="target" required placeholder="app.empresa.com.br">
+      </div>
+      <div class="field">
+        <label for="scanType">Tipo de varredura</label>
+        <select id="scanType" name="type" required>
+          <option>Web Application</option>
+          <option>Network Scan</option>
+          <option>API Security</option>
+          <option>Infrastructure</option>
+          <option>Database</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+      <button type="submit" class="btn btn-primary">Iniciar Varredura</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>
